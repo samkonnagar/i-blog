@@ -32,9 +32,7 @@ $noOfBlogs = mysqli_num_rows($res);
     <?php require_once 'comp/blog_sec.php';  ?>
 </main>
 
-    <footer>
-        <p>&copy; 2024 Our Website. All Rights Reserved.</p>
-    </footer>
+<?php include_once 'comp/footer.php'; ?>
 </body>
 
 </html>

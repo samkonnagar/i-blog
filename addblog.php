@@ -46,9 +46,7 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Our Website. All Rights Reserved.</p>
-    </footer>
+    <?php include_once 'comp/footer.php'; ?>
 
 
     <script>
