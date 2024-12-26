@@ -1,0 +1,227 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Blog Section */
+.blog-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
+/* Blog Card Styling */
+.blog-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    position: relative;
+}
+
+.blog-features{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.blog-features>*{
+    cursor: pointer;
+}
+.blog-features i{
+    color: #fff;
+    font-size: 1.1rem;
+    background-color: #212121;
+    padding: .5rem;
+    border-radius: 5px;
+    border: 1px solid #888888;
+}
+.blog-features i:hover{
+    color: #888888;
+}
+.blog-features select{
+    padding: .2rem .3rem;
+    background-color: #212121;
+    color: whitesmoke;
+    border-radius: .5rem;
+    font-size: 1rem;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.blog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px;
+    color: #333;
+}
+
+.blog-description {
+    font-size: 1rem;
+    margin: 0 20px 20px;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 1.3rem;
+    }
+
+    .blog-description {
+        font-size: 0.9rem;
+    }
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: .4rem;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+nav img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    display: block;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+main {
+    padding: 2rem;
+    min-height: 85vh;
+}
+
+.hero {
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+.about,
+.contact,
+.auth-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+#otpLogin{
+    display: none;
+}
+
+.divider{
+    display: flex;
+    gap: .5rem;
+    padding-block: .5rem;
+    align-items: center;
+}
+.divider span{
+    border-top: 1px solid gray;
+    flex-grow: 1;
+}
