@@ -92,3 +92,8 @@ textarea {
 .fm-gp{
     margin-bottom: 0px;
 }
+@media (max-width: 768px) {
+    .form-container{
+        padding: 10px;
+    }
+}

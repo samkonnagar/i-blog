@@ -23,6 +23,7 @@ $noOfBlogs = mysqli_num_rows($res);
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.js"></script>
     <script src="js/ajax.js" defer></script>
+    <script src="js/common.js" defer></script>
 </head>
 
 <body>

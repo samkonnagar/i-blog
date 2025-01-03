@@ -7,6 +7,7 @@
     <title>Add New Blog</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/addBlog.css">
+    <script src="js/common.js" defer></script>
 </head>
 <body>
     <?php include_once 'comp/navbar.php';  ?>
