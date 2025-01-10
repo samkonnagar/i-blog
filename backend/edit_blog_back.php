@@ -5,7 +5,7 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Define variables and initialize with empty values
-    $blog_title = $blog_description = $user_id = "";
+    $blog_title = $blog_description = "";
     $publish_mode = $_POST['publish_mode'];
     if (!isset($_POST['bId'])) {
         $msg = "Invalid Request";
@@ -34,9 +34,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate image upload
     if (empty($_FILES["blog_image"]["name"])) {
-        $msg = "Blog image is required.";
-        header("location: ../addblog.php?messge=$msg");
-        exit();
+        $sql="UPDATE `blogs` SET `title`='$blog_title',`description`='$blog_description',`mode`='$publish_mode' where id=$bId";
+
+            try {
+                if (mysqli_query($conn, $sql)) {
+                    $msg = "Blog Updated";
+                    header("location: ../index.php?messge=$msg");
+                    exit();
+                }
+            } catch (\Throwable $th) {
+                echo "Error: " . mysqli_error($conn);
+            }
     } else {
         $target_dir = "img/";
         $file_name = basename($_FILES["blog_image"]["name"]);
@@ -45,14 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check file size (limit to 5MB)
         if ($_FILES["blog_image"]["size"] > (5*1024*1024)) {
             $msg = "Sorry, your file is too large.";
-            header("location: ../addblog.php?messge=$msg");
+            header("location: ../editBlog.php?blog_id=$bId&messge=$msg");
             exit();
         }
 
         // Allow certain file formats
         if (!in_array($imageFileType, ["jpg", "jpeg", "png"])) {
             $msg = "Sorry, only JPG, JPEG & PNG files are allowed.";
-            header("location: ../addblog.php?messge=$msg");
+            header("location: ../editBlog.php?blog_id=$bId&messge=$msg");
             exit();
         }
 
@@ -68,12 +76,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["blog_image"]["tmp_name"], "../img/$new_file_name")) {
 
             $user_id = $_SESSION['user_id'];
-            $sql = "INSERT INTO `blogs`(`user_id`, `title`, `description`, `image`, `mode`) VALUES ('$user_id','$blog_title','$blog_description','$new_file_name', '$publish_mode')";
+
+            $sql="UPDATE `blogs` SET `user_id`='$user_id',`title`='$blog_title',`description`='$blog_description',`image`='$new_file_name',`mode`='$publish_mode' where id='$bId'";
 
             try {
                 if (mysqli_query($conn, $sql)) {
-                    $msg = "Blog Uploaded";
-                    header("location: ../addblog.php?messge=$msg");
+                    $msg = "Blog Updated";
+                    header("location: ../index.php?&messge=$msg");
                     exit();
                 }
             } catch (\Throwable $th) {
@@ -82,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             $msg = "Sorry, there was an error uploading your file.";
-            header("location: ../addblog.php?messge=$msg");
+            header("location: ../editBlog.php?blog_id=$bId&messge=$msg");
             exit();
         }
         
